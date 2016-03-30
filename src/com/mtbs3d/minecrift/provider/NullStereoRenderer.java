@@ -126,10 +126,10 @@ public class NullStereoRenderer extends BasePlugin implements IStereoProvider
     }
 
     @Override
-    public boolean endFrame() {
+    public int endFrame() {
         GL11.glFlush();
         Display.update();
-        return true;
+        return 0;
     }
 
     @Override
@@ -159,11 +159,6 @@ public class NullStereoRenderer extends BasePlugin implements IStereoProvider
         return null;
     }
 
-	@Override
-	public boolean setCurrentRenderTextureInfo(int index, int textureIdx, int depthId, int depthWidth, int depthHeight) {
-		return true;
-	}
-
     @Override
     public void deleteRenderTextures() {}
 
@@ -172,4 +167,10 @@ public class NullStereoRenderer extends BasePlugin implements IStereoProvider
 
     @Override
     public void configureRenderer(GLConfig cfg) {}
+
+    @Override
+    public int getEyeRenderTexture(EyeType eye) { return 0; }
+
+    @Override
+    public void endEyeRender(EyeType eye) {}
 }

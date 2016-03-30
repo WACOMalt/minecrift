@@ -1,3 +1,8 @@
+[Minecrift 1.7.10 R3]
+
+- Oculus SDK - support SDK 1.3 on Windows including asynchronous timewarp.
+
+
 [Minecrift 1.7.10 R2b]
 
 Bug fixes

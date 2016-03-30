@@ -126,5 +126,5 @@ public class NeckModelEyePosition extends BasePlugin implements IEyePositionProv
 
     public void beginFrame() { beginFrame(0); }
     public void beginFrame(long frameIndex) { }
-    public boolean endFrame() { return true; }
+    public int endFrame() { return 0; }
 }

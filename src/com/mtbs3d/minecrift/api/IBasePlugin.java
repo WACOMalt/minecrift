@@ -50,5 +50,5 @@ public interface IBasePlugin {
 
     public void beginFrame(long frameIndex);
 
-    public boolean endFrame();
+    public int endFrame();
 }

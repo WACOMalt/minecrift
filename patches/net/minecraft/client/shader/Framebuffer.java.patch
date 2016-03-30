@@ -205,15 +205,15 @@
 +			/** END MINECRIFT */
          }
 +		
-+    }
-+
+     }
+ 
 +	/** MINECRIFT */
 +    public void genMipMaps()
 +    {
 +        GL30.glGenerateMipmap(this.textureType);    // TODO: Minecrift - Check GLContext capabilities
-     }
++    }
 +	/** END MINECRIFT */
- 
++
      public void setFramebufferFilter(int p_147607_1_)
      {
          if (OpenGlHelper.isFramebufferEnabled())
@@ -303,7 +303,7 @@
              GL11.glDisable(GL11.GL_LIGHTING);
              GL11.glDisable(GL11.GL_ALPHA_TEST);
              GL11.glDisable(GL11.GL_BLEND);
-@@ -265,4 +397,80 @@
+@@ -265,4 +397,91 @@
          GL11.glClear(var1);
          this.unbindFramebuffer();
      }
@@ -348,7 +348,7 @@
 +        }
 +    }
 +
-+	public void selectTexture()
++	private void selectTexture()
 +    {
 +    	if(textureSelector!=null)
 +        {
@@ -356,6 +356,17 @@
 +            OpenGlHelper.func_153188_a(OpenGlHelper.field_153198_e, OpenGlHelper.field_153200_g, this.textureType, this.framebufferTexture, 0);    // GL30.glFramebufferTexture2D
 +    	}
 +	}
++
++    public void selectTexture(int textureId)
++    {
++        if(textureId > 0) {
++            this.framebufferTexture = textureId;
++            OpenGlHelper.func_153188_a(OpenGlHelper.field_153198_e, OpenGlHelper.field_153200_g, this.textureType, this.framebufferTexture, 0);    // GL30.glFramebufferTexture2D
++        }
++        else {
++            selectTexture();
++        }
++    }
 +
 +    public int getFramebufferType()
 +    {

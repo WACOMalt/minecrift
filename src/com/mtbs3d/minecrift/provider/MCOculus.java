@@ -112,7 +112,7 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
          return super.getProjectionMatrix(fov, nearClip, farClip);
     }
 
-    public boolean endFrame()
+    public int endFrame()
     {
         // End the frame
         ErrorInfo result = submitFrame();
@@ -120,9 +120,13 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
         Display.processMessages();
 
         if (result == null)
-            return true;
+            return IStereoProvider.DISPLAY_VISIBLE;
 
-        return result.unqualifiedSuccess;
+        if (result.shutdownReq) {
+            return IStereoProvider.DISPLAY_SHUTDOWN;
+        }
+
+        return result.unqualifiedSuccess ? IStereoProvider.DISPLAY_VISIBLE : IStereoProvider.DISPLAY_NOT_VISIBLE;
     }
 
     @Override
@@ -464,4 +468,16 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
 
     @Override
     public boolean providesMirrorTexture() { return true; }
+
+    @Override
+    public int getEyeRenderTexture(EyeType eye)
+    {
+        return getCurrentEyeRenderTextureId(eye);
+    }
+
+    @Override
+    public void endEyeRender(EyeType eye)
+    {
+        commitCurrentEyeRenderTexture(eye);
+    }
 }

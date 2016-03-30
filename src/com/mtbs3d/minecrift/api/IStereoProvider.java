@@ -16,6 +16,10 @@ import de.fruitfly.ovr.structs.*;
  */
 public interface IStereoProvider extends IBasePlugin
 {
+    public static final int DISPLAY_VISIBLE = 0;
+    public static final int DISPLAY_NOT_VISIBLE = 1;
+    public static final int DISPLAY_SHUTDOWN = 2;
+
     public RenderTextureInfo getRenderTextureSizes(FovPort LeftFov,
                                                    FovPort RightFov,
                                                    float renderScaleFactor);
@@ -48,7 +52,9 @@ public interface IStereoProvider extends IBasePlugin
 
     public double getCurrentTimeSecs();
 
-	public boolean setCurrentRenderTextureInfo(int index, int textureIdx, int depthId, int depthWidth, int depthHeight);
+	public int getEyeRenderTexture(EyeType eye);
+
+    public void endEyeRender(EyeType eye);
 
     public String getLastError();
 
