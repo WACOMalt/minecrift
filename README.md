@@ -19,13 +19,17 @@ commandline operation) e.g. for branch 1.7.10:
 For OSX / Linux:
 
 > git clone -b port_to_1_7_10 https://github.com/mabrowning/minecrift.git ~/minecrift-public-1710
+
 > cd ~/minecrift-public-1710
+
 > git submodule update --init --recursive
 
 For Windows:
 
 >git clone -b port_to_1_7_10 https://github.com/mabrowning/minecrift.git c:\minecrift-public-1710
+
 >cd /D c:\minecrift-public-1710
+
 >git submodule update --init --recursive
 
 Setting up
